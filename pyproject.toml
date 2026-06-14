@@ -39,12 +39,19 @@ log_cli_level = "WARNING"
 addopts = "-s"
 
 [tool.ruff]
-line-length = 120
-
-[tool.ruff.lint.extend-per-file-ignores]
-# Also ignore `E402` in all `__init__.py` files.
-"__init__.py" = ["E402", "F401", "F403", "E501"]
+line-length = 100
+target-version = "py314"
 
 [tool.ruff.lint]
-extend-select = ["UP"]
-ignore = ["F722"]
+extend-select = ["E", "F", "I", "UP", "B", "ANN"]
+ignore = ["E501"]
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ty.environment]
+python = ".venv"
+
+[tool.ty.rules]
+all = "error"

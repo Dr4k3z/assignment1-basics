@@ -1,0 +1,13 @@
+name: pytest
+
+on:
+  [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-python-env
+      - run: uv run pytest tests/test_train_bpe.py
+      - run: uv run pytest tests/test_tokenizer.py 
